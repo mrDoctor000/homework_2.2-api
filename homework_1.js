@@ -24,7 +24,6 @@ restV1.post('/users/:name/score/:score', (req, res) => {
     name: req.params.name,
     score: req.params.score
   };
-  console.log(users.find(el => { return el.name === req.params.name }));
 
   if (users.find(el => { return el.name === req.params.name }) === undefined) {
     users.push(user);
