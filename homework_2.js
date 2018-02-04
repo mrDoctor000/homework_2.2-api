@@ -23,6 +23,15 @@ const users = [{
 ];
 
 const RPC = {
+  'read_user': function(name, callback) {
+    users.find(el => {
+      if (el.name === name) {
+        callback(0, el)
+      } else {
+        callback(404, null);
+      }
+    });
+  },
   'add_user': function(params, callback) {
     if (users.find(el => { return el.name === req.params.name }) === undefined) {
       users.push(params);
@@ -44,7 +53,7 @@ const RPC = {
       callback(404, null)
     }
   },
-  "update_user": function(name, score, callback) {
+  'update_user': function(name, score, callback) {
     const element = users.find(el => {
       if (el.name === name) {
         el.score = score;
